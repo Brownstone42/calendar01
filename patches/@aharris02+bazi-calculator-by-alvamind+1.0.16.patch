@@ -1,0 +1,124 @@
+diff --git a/node_modules/@aharris02/bazi-calculator-by-alvamind/dist/index.cjs b/node_modules/@aharris02/bazi-calculator-by-alvamind/dist/index.cjs
+index 7354ac5..01323ed 100644
+--- a/node_modules/@aharris02/bazi-calculator-by-alvamind/dist/index.cjs
++++ b/node_modules/@aharris02/bazi-calculator-by-alvamind/dist/index.cjs
+@@ -7543,11 +7543,11 @@ var AnalysisCalculator = class {
+   }
+   checkStemClashTimed(p1, p2, interactions, location) {
+     if (!p1.stemChar || !p2.stemChar) return;
+-    console.log(`DEBUG checkStemClashTimed: Comparing ${p1.source}${p1.pillarName}(${p1.stemChar}) with ${p2.source}${p2.pillarName}(${p2.stemChar}) for location ${location}`);
++    //console.log(`DEBUG checkStemClashTimed: Comparing ${p1.source}${p1.pillarName}(${p1.stemChar}) with ${p2.source}${p2.pillarName}(${p2.stemChar}) for location ${location}`);
+     const pairKey = makePairKey(p1.stemChar, p2.stemChar);
+     const isClash = STEM_CLASHES.some((clash) => makePairKey(clash[0], clash[1]) === pairKey);
+     if (isClash) {
+-      console.log(`DEBUG StemClash FOUND: ${p1.stemChar} vs ${p2.stemChar}`);
++      //console.log(`DEBUG StemClash FOUND: ${p1.stemChar} vs ${p2.stemChar}`);
+       const participants = [
+         { pillar: p1.pillarName, source: p1.source, elementChar: p1.stemChar, elementType: "Stem" },
+         { pillar: p2.pillarName, source: p2.source, elementChar: p2.stemChar, elementType: "Stem" }
+@@ -7696,17 +7696,17 @@ var AnalysisCalculator = class {
+         branchMap.get(p.branchChar).push(p);
+       }
+     });
+-    console.log("DEBUG SelfPunishment: Branch Map Keys:", Array.from(branchMap.keys()));
++    //console.log("DEBUG SelfPunishment: Branch Map Keys:", Array.from(branchMap.keys()));
+     selfDefs.forEach((def) => {
+       const bChar = def.branches[0];
+-      console.log(`DEBUG SelfPunishment: Checking for self-punishment of ${bChar}`);
++      //console.log(`DEBUG SelfPunishment: Checking for self-punishment of ${bChar}`);
+       const pList = branchMap.get(bChar) || [];
+-      console.log(`DEBUG SelfPunishment: Found ${pList.length} pillars with branch ${bChar}`);
++      //console.log(`DEBUG SelfPunishment: Found ${pList.length} pillars with branch ${bChar}`);
+       if (pList.length >= 2) {
+-        console.log(`DEBUG SelfPunishment: Found >=2 pillars for ${bChar}. Processing pairs.`);
++        //console.log(`DEBUG SelfPunishment: Found >=2 pillars for ${bChar}. Processing pairs.`);
+         for (let i = 0; i < pList.length; i++) for (let j = i + 1; j < pList.length; j++) {
+           const pA = pList[i], pB = pList[j];
+-          console.log(`DEBUG SelfPunishment: Adding punishment for ${pA.source}${pA.pillarName}(${pA.branchChar}) and ${pB.source}${pB.pillarName}(${pB.branchChar})`);
++          //console.log(`DEBUG SelfPunishment: Adding punishment for ${pA.source}${pA.pillarName}(${pA.branchChar}) and ${pB.source}${pB.pillarName}(${pB.branchChar})`);
+           const parts = [{ p: pA }, { p: pB }].map((item) => ({ pillar: item.p.pillarName, source: item.p.source, elementChar: item.p.branchChar, elementType: "Branch" }));
+           this.addInteractionTimed(interactions, "BranchPunishment", parts, this.determineInteractionLocation(pA, pB), null, def.description);
+         }
+@@ -7842,9 +7842,9 @@ function calculateLuckPillars(fourPillars, gender, passed, remaining, birthDateT
+       months: startAgeMonths,
+       days: startAgeDays
+     });
+-    console.log(`DEBUG Luck Pillar Age Calc: InputMins=${validAgeMinutes}, Years=${startAgeYears}, Months=${startAgeMonths}, Days Component (Hours)=${hoursComponentForDays}, Calculated Days=${startAgeDays}`);
++    //console.log(`DEBUG Luck Pillar Age Calc: InputMins=${validAgeMinutes}, Years=${startAgeYears}, Months=${startAgeMonths}, Days Component (Hours)=${hoursComponentForDays}, Calculated Days=${startAgeDays}`);
+   } else {
+-    console.log(`DEBUG Luck Pillar Age Calc: Timing unknown or solar term data missing. Start age not calculated.`);
++    //console.log(`DEBUG Luck Pillar Age Calc: Timing unknown or solar term data missing. Start age not calculated.`);
+   }
+   const baseHeavenlyStem = fourPillars.month.heavenlyStem;
+   const baseEarthlyBranch = fourPillars.month.earthlyBranch;
+@@ -8064,7 +8064,7 @@ var BaziCalculator = class {
+         console.warn("Failed to calculate solar term timing for luck pillars, timing will be unknown.");
+       }
+     } else {
+-      console.log("Birth time is unknown, luck pillar timing will not be calculated.");
++      //console.log("Birth time is unknown, luck pillar timing will not be calculated.");
+     }
+     this.luckPillarsResult = calculateLuckPillars(
+       detailedPillars,
+diff --git a/node_modules/@aharris02/bazi-calculator-by-alvamind/dist/index.js b/node_modules/@aharris02/bazi-calculator-by-alvamind/dist/index.js
+index 7f6d99b..eddab49 100644
+--- a/node_modules/@aharris02/bazi-calculator-by-alvamind/dist/index.js
++++ b/node_modules/@aharris02/bazi-calculator-by-alvamind/dist/index.js
+@@ -7517,11 +7517,11 @@ var AnalysisCalculator = class {
+   }
+   checkStemClashTimed(p1, p2, interactions, location) {
+     if (!p1.stemChar || !p2.stemChar) return;
+-    console.log(`DEBUG checkStemClashTimed: Comparing ${p1.source}${p1.pillarName}(${p1.stemChar}) with ${p2.source}${p2.pillarName}(${p2.stemChar}) for location ${location}`);
++    //console.log(`DEBUG checkStemClashTimed: Comparing ${p1.source}${p1.pillarName}(${p1.stemChar}) with ${p2.source}${p2.pillarName}(${p2.stemChar}) for location ${location}`);
+     const pairKey = makePairKey(p1.stemChar, p2.stemChar);
+     const isClash = STEM_CLASHES.some((clash) => makePairKey(clash[0], clash[1]) === pairKey);
+     if (isClash) {
+-      console.log(`DEBUG StemClash FOUND: ${p1.stemChar} vs ${p2.stemChar}`);
++      //console.log(`DEBUG StemClash FOUND: ${p1.stemChar} vs ${p2.stemChar}`);
+       const participants = [
+         { pillar: p1.pillarName, source: p1.source, elementChar: p1.stemChar, elementType: "Stem" },
+         { pillar: p2.pillarName, source: p2.source, elementChar: p2.stemChar, elementType: "Stem" }
+@@ -7670,17 +7670,17 @@ var AnalysisCalculator = class {
+         branchMap.get(p.branchChar).push(p);
+       }
+     });
+-    console.log("DEBUG SelfPunishment: Branch Map Keys:", Array.from(branchMap.keys()));
++    //console.log("DEBUG SelfPunishment: Branch Map Keys:", Array.from(branchMap.keys()));
+     selfDefs.forEach((def) => {
+       const bChar = def.branches[0];
+-      console.log(`DEBUG SelfPunishment: Checking for self-punishment of ${bChar}`);
++      //console.log(`DEBUG SelfPunishment: Checking for self-punishment of ${bChar}`);
+       const pList = branchMap.get(bChar) || [];
+-      console.log(`DEBUG SelfPunishment: Found ${pList.length} pillars with branch ${bChar}`);
++      //console.log(`DEBUG SelfPunishment: Found ${pList.length} pillars with branch ${bChar}`);
+       if (pList.length >= 2) {
+-        console.log(`DEBUG SelfPunishment: Found >=2 pillars for ${bChar}. Processing pairs.`);
++        //console.log(`DEBUG SelfPunishment: Found >=2 pillars for ${bChar}. Processing pairs.`);
+         for (let i = 0; i < pList.length; i++) for (let j = i + 1; j < pList.length; j++) {
+           const pA = pList[i], pB = pList[j];
+-          console.log(`DEBUG SelfPunishment: Adding punishment for ${pA.source}${pA.pillarName}(${pA.branchChar}) and ${pB.source}${pB.pillarName}(${pB.branchChar})`);
++          //console.log(`DEBUG SelfPunishment: Adding punishment for ${pA.source}${pA.pillarName}(${pA.branchChar}) and ${pB.source}${pB.pillarName}(${pB.branchChar})`);
+           const parts = [{ p: pA }, { p: pB }].map((item) => ({ pillar: item.p.pillarName, source: item.p.source, elementChar: item.p.branchChar, elementType: "Branch" }));
+           this.addInteractionTimed(interactions, "BranchPunishment", parts, this.determineInteractionLocation(pA, pB), null, def.description);
+         }
+@@ -7816,9 +7816,9 @@ function calculateLuckPillars(fourPillars, gender, passed, remaining, birthDateT
+       months: startAgeMonths,
+       days: startAgeDays
+     });
+-    console.log(`DEBUG Luck Pillar Age Calc: InputMins=${validAgeMinutes}, Years=${startAgeYears}, Months=${startAgeMonths}, Days Component (Hours)=${hoursComponentForDays}, Calculated Days=${startAgeDays}`);
++    //console.log(`DEBUG Luck Pillar Age Calc: InputMins=${validAgeMinutes}, Years=${startAgeYears}, Months=${startAgeMonths}, Days Component (Hours)=${hoursComponentForDays}, Calculated Days=${startAgeDays}`);
+   } else {
+-    console.log(`DEBUG Luck Pillar Age Calc: Timing unknown or solar term data missing. Start age not calculated.`);
++    //console.log(`DEBUG Luck Pillar Age Calc: Timing unknown or solar term data missing. Start age not calculated.`);
+   }
+   const baseHeavenlyStem = fourPillars.month.heavenlyStem;
+   const baseEarthlyBranch = fourPillars.month.earthlyBranch;
+@@ -8038,7 +8038,7 @@ var BaziCalculator = class {
+         console.warn("Failed to calculate solar term timing for luck pillars, timing will be unknown.");
+       }
+     } else {
+-      console.log("Birth time is unknown, luck pillar timing will not be calculated.");
++      //console.log("Birth time is unknown, luck pillar timing will not be calculated.");
+     }
+     this.luckPillarsResult = calculateLuckPillars(
+       detailedPillars,

@@ -1,11 +1,33 @@
-<script setup></script>
-
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+	<the-header></the-header>
+	<router-view></router-view>
 </template>
 
-<style scoped></style>
+<script>
+import theHeader from './components/common/theHeader.vue'
+
+export default {
+    name: 'App',
+    components: {
+        theHeader,
+    },
+}
+</script>
+
+<style lang="scss">
+html, body {
+    height: 100%;
+}
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+@font-face {
+    font-family: 'D-DIN Condensed';
+    src: url('./fonts/D-DINCondensed.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+</style>

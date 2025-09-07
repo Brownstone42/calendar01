@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import cardCarousel from '@/components/common/cardCarousel.vue'
+import cardCarousel from '@/components/common/cardCarousel2.vue'
 
 export default {
 	name: 'calendar',

@@ -1,15 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/HomePage.vue'
 import Calendar from '../views/Calendar.vue'
+import Admin from '../views/Admin.vue'
 
 import SelfAnalysis from '@/components/calendar/SelfAnalysis.vue'
 import SelfYearly from '@/components/calendar/SelfYearly.vue'
+
+
 
 const routes = [
 	{
         path: '/',
         name: 'HomePage',
         component: HomePage,
+    },
+    {
+        path: '/admin',
+        name: 'Admin',
+        component: Admin,
     },
 	{
         path: '/Calendar',
